@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1주차 - Hoisting</title>
+</head>
+<body>
+    <script>
+        /*
+            JS 엔진이 스크립트를 가져올 때 가장 먼저 하는 일 : 코드의 데이터에 대한 메모리 설정 = 코드실행x, 코드 실행 준비
+            함수 선언과 변수가 저장되는 방식은 다르다.
+            호이스팅 = 코드의 순서에 상관없이 모든 변수는 메모리 참조 영역에 저장된다.
+
+            var : Function-scope, 같은 이름의 변수를 2번 선언해도 에러가 발생하지 않는다.
+            let : Block-scope, 초기화 하지 않은 상태로 변수 저장(uninitialized), 변수 재선언이 불가능하다.
+            const : Block-scope, 초기화 하지 않은 상태로 변수 저장(uninitialized), 변수 재선언, 재할당 모두 불가능하다.
+        */
+        console.log("1. " + sum(2, 3));
+        //console.log("2. " + name); cannot access 'name' before initialization 콘솔 오류 발생
+        //console.log("3. " + info); cannot access 'info' before initialization 콘솔 오류 발생
+        console.log("4. " + city);
+
+        function sum(x, y){
+            return x + y
+        }
+
+        const name = "철수"
+        //const name = "영희" -> 변수 재선언 하면 declared 콘솔 오류 발생 (= SyntaxError, 구문오류, let도 마찬가지)
+
+        let info = {
+            age: 99,
+            nation: "대구"
+        }
+
+        var city = "서울"
+        var city = "부산" // 변수 재선언 가능, 오류가 아님
+
+        console.log("a. " + sum(2, 3));
+        console.log("b. " + name);
+        console.log("c. " + info);
+        console.log("d. " + city);
+    </script>
+</body>
+</html>

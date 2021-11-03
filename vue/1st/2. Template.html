@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1주차 - Template and Slot</title>
+    <script src="2. Template.js"></script>
+</head>
+
+<body>
+    <tempate id="my-card" class=''>
+        <p>f12로 엘리먼트를 확인해보세요.</p>
+
+        <!-- 질문 : 아래 구조가 뭔지 모르겠다. -->
+        <p class='title'>{title}</p>
+        <#if(title)>
+            
+        <#end>
+        <#else>
+            
+        <#end>
+        <p class='body'>body</p>
+    </template>
+
+    <script>
+        let myCard = document.getElementById('my-card');
+        let myCardContent = myCard.content;
+
+        // 질문 : 클래스는 왜 추가가 안되나요?
+        myCard.id = '아이디 추가';
+        myCard.class = '클래스 추가';
+        myCard.title = '타이틀 추가';
+
+        document.body.appendChild(myCardContent);
+    </script>
+
+
+    <select-box1>
+        <slot slot="tit">전체글</slot>
+        <slot slot="list">All</slot>
+    </select-box1>
+
+    <select-box1>
+        <slot slot="tit">전체글</slot>
+        <slot slot="list">리스트1</slot>
+        <slot slot="list">리스트2</slot>
+        <slot slot="list">리스트3</slot>
+    </select-box1>
+
+    <select-box2>
+        <slot slot="tit1">리스트1</slot>
+        <slot slot="tit2">리스트2</slot>
+        <slot slot="tit3">리스트3</slot>
+    </select-box2>
+</body>
+</html>
