@@ -3,6 +3,7 @@ import Layout2 from '@/components/Layout2.vue'
 import Parent from '@/components/Parent.vue'
 import Child from '@/components/Child.vue'
 
+import Index from '@/components/lists/Index.vue'
 import List from '@/components/lists/List.vue'
 
 const routes = [
@@ -14,7 +15,7 @@ const routes = [
         path: '/layout2',
         component: Layout2
     },
-{
+    {
         path: '/parent',
         component: Parent
     },
@@ -23,10 +24,13 @@ const routes = [
         component: Child
     },
     {
+        path: '/index',
+        component: Index
+    },
+    {
         path: '/list',
         component: List
     }
-
 ]
 
 export default routes;
