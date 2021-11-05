@@ -9,6 +9,14 @@ import List from '@/components/lists/List.vue'
 const routes = [
     {
         path: '/',
+        component: Index
+    },
+    {
+        path: '/list',
+        component: List
+    },
+    {
+        path: '/layout',
         component: Layout
     },
     {
@@ -23,14 +31,6 @@ const routes = [
         path: '/child',
         component: Child
     },
-    {
-        path: '/index',
-        component: Index
-    },
-    {
-        path: '/list',
-        component: List
-    }
 ]
 
 export default routes;

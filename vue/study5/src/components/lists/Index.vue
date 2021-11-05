@@ -1,8 +1,32 @@
 <template>
     <div>
-        <list></list>
-        <gallery></gallery>
-        <webzine></webzine>
+        <button 
+            v-on:click="listOpen"
+            class="btn-list"
+        >리스트</button>
+
+        <button 
+            v-on:click="listOpen"
+            class="btn-gallery"
+        >갤러리</button>
+
+        <button 
+            v-on:click="listOpen"
+            class="btn-webzine"
+        >웹진</button>
+
+
+        <list
+            v-if="visible"
+        ></list>
+
+        <gallery
+            v-else-if="visible = false"
+        ></gallery>
+
+        <webzine
+            v-else
+        ></webzine>
     </div>
 </template>
 
@@ -17,6 +41,20 @@ export default({
         List,
         Gallery,
         Webzine
+    },
+    data(){
+        return{
+            visible: true,
+
+            listVisible: true,
+            galleryVisible: false,
+            webzineVisible: false
+        }   
+    },
+    methods: {
+        listOpen: function(){
+            this.visible = !this.visible;
+        }
     }
 })
 </script>
