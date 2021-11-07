@@ -6,7 +6,7 @@
         >리스트</button>
 
         <button 
-            v-on:click="listOpen"
+            v-on:click="galleryOpen"
             class="btn-gallery"
         >갤러리</button>
 
@@ -17,15 +17,13 @@
 
 
         <list
-            v-if="visible"
+            v-bind:class="{ 'table-list': isList,  'table-gallery': isGallery }"
         ></list>
 
         <gallery
-            v-else-if="visible = false"
         ></gallery>
-
+        
         <webzine
-            v-else
         ></webzine>
     </div>
 </template>
@@ -44,17 +42,19 @@ export default({
     },
     data(){
         return{
-            visible: true,
-
-            listVisible: true,
-            galleryVisible: false,
-            webzineVisible: false
+            isList: true,
+            isGallery: false
         }   
     },
     methods: {
         listOpen: function(){
-            this.visible = !this.visible;
-        }
+            this.isList = true;
+            this.isGallery = false;
+        },
+        galleryOpen: function(){
+            this.isList = false;
+            this.isGallery = true;
+        },
     }
 })
 </script>

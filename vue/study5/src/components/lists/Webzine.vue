@@ -1,5 +1,5 @@
 <template>
-    <div>웹진</div>
+    <div></div>
 </template>
 
 <script>
