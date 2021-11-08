@@ -16,12 +16,10 @@
 </template>
 
 <script>
-import AppLayout from '@/components/AppLayout.vue'
+import AppLayout from '@/components/AppLayout.vue';
 
 export default ({
     name: 'Layout',
-    components: {
-        AppLayout
-    }
-})
+    components: { AppLayout }
+});
 </script>

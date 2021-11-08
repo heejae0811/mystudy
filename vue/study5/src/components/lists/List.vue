@@ -14,7 +14,7 @@
                 v-on:click="modalOpen(item)"
             >
                 <td class="thumbnail"><img v-bind:src="item.thumbnail"></td>
-                <td class="number">{{ item.number }}</td>
+                <td class="num">{{ item.num }}</td>
                 <td class="title">{{ item.title }}</td>
                 <td class="writer">{{ item.writer }}</td>
                 <td class="date">{{ new Date() | moment('YYYY-MM-DD HH:mm:ss') }}</td>
@@ -34,7 +34,8 @@
                     v-on:click="modalOpen(item)"
                     class="modal-close"
                 >&times;</span>
-                <p><span>번호 : </span> {{ modalData.number }}</p>
+                
+                <p><span>번호 : </span> {{ modalData.num }}</p>
                 <p><span>제목 : </span> {{ modalData.title }}</p>
                 <p><img v-bind:src="modalData.thumbnail"></p>
                 <p><span>글쓴이 : </span> {{ modalData.writer }}</p>
@@ -48,19 +49,20 @@
 <script>
 export default ({
     name: 'list',
-    data(){
-        return{            
+    data() {
+        return {            
             userData: [
                 {
-                    number: 1,
+                    num: 1,
                     title: '뷰 5주차 과제',
+                    // FIXME :: require를 사용안하고 img src 값을 가져오는 방법은??
                     thumbnail: require('@/assets/images/tree01.jpg'),
                     writer: '김하영',
                     date: '',
                     count: 0
                 },
                 {
-                    number: 2,
+                    num: 2,
                     title: 'v-for="(item, key) in userData" :key="key"',
                     thumbnail: require('@/assets/images/tree02.jpg'),
                     writer: '송민섭',
@@ -68,7 +70,7 @@ export default ({
                     count: 0
                 },
                 {
-                    number: 3,
+                    num: 3,
                     title: 'v-on:click="modalOpen(item)',
                     thumbnail: require('@/assets/images/tree03.jpg'),
                     writer: '이희재',
@@ -76,7 +78,7 @@ export default ({
                     count: 0
                 },
                 {
-                    number: 4,
+                    num: 4,
                     title: '어렵다',
                     thumbnail: require('@/assets/images/tree04.jpg'),
                     writer: '정주호',
@@ -86,27 +88,27 @@ export default ({
             ],
             modalData: {
                 visible: false,
-                number: '',
+                num: '',
                 title: '',
                 thumbnail: '',
                 writer: '',
                 date: '',
-                count: 0
-            },
+                count: ''
+            }
         }
     },
     methods: {
-        modalOpen: function(item){
+        modalOpen: function(item) {
             this.modalData.visible = !this.modalData.visible;
-            this.modalData.number = item.number;
+            this.modalData.num = item.num;
             this.modalData.title = item.title;
             this.modalData.thumbnail = item.thumbnail;
             this.modalData.writer = item.writer;
             this.modalData.date = item.date;
             this.modalData.count = ++item.count;
-        },
+        }
     }
-})
+});
 </script>
 
 <style>

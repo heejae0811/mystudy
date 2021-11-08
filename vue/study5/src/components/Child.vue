@@ -7,8 +7,6 @@
 <script>
 export default ({
     name: 'child',
-    props: [
-        'text'
-    ]
-})
+    props: [ 'text' ]
+});
 </script>

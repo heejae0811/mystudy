@@ -6,52 +6,41 @@
 
         <button v-on:click="webzineOpen">웹진</button>
 
-
         <list v-bind:class="{ 'table-list': isList,  'table-gallery': isGallery, 'table-webzine': isWebzine }"></list>
-
-        <gallery></gallery>
-        
-        <webzine></webzine>
     </div>
 </template>
 
 <script>
-import List from '@/components/lists/List.vue'
-import Gallery from '@/components/lists/Gallery.vue'
-import Webzine from '@/components/lists/Webzine.vue'
+import List from '@/components/lists/List.vue';
 
-export default({
+export default ({
     name: 'Index',
-    components: {
-        List,
-        Gallery,
-        Webzine
-    },
-    data(){
-        return{
+    components: { List },
+    data() {
+        return {
             isList: true,
             isGallery: false,
             isWebzine: false
         }   
     },
     methods: {
-        listOpen: function(){
+        listOpen: function() {
             this.isList = true;
             this.isGallery = false;
             this.isWebzine = false;
         },
-        galleryOpen: function(){
+        galleryOpen: function() {
             this.isList = false;
             this.isGallery = true;
             this.isWebzine = false;
         },
-        webzineOpen: function(){
+        webzineOpen: function() {
             this.isList = false;
             this.isGallery = false;
             this.isWebzine = true;
         }
     }
-})
+});
 </script>
 
 <style>

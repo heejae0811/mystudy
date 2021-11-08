@@ -11,10 +11,8 @@
 <script>
 export default ({
     name: 'AppLayout',
-    props: [
-        'text'
-    ]
-})
+    props: [ 'text' ]
+});
 </script>
 
 <style>
