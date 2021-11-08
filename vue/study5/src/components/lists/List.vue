@@ -22,6 +22,8 @@
             </tr>
         </table>
 
+        <section>웹진 페이지 입니다. 그냥 이렇게 해봤습니다.</section>
+
         <div
             v-if="modalData.visible"
             v-on:click.self="modalOpen(item)"
@@ -59,7 +61,7 @@ export default ({
                 },
                 {
                     number: 2,
-                    title: 'v-for="(item, key) in userData',
+                    title: 'v-for="(item, key) in userData" :key="key"',
                     thumbnail: require('@/assets/images/tree02.jpg'),
                     writer: '송민섭',
                     date: '',
@@ -101,7 +103,7 @@ export default ({
             this.modalData.thumbnail = item.thumbnail;
             this.modalData.writer = item.writer;
             this.modalData.date = item.date;
-            this.modalData.count = item.count++;
+            this.modalData.count = ++item.count;
         },
     }
 })
@@ -113,6 +115,7 @@ img { width: 250px; height: 250px; }
 .table-list table { width: 100%; margin: 50px auto 0; border: 1px solid #ddd; border-collapse: collapse; }
 .table-list th { padding: 5px 10px; border-left: 1px solid #ddd; }
 .table-list td { padding: 5px 10px; border-left: 1px solid #ddd; border-top: 1px solid #ddd; cursor: pointer; }
+.table-list section,
 .table-list tr th:first-child,
 .table-list tr td:first-child { display: none; }
 
@@ -120,9 +123,13 @@ img { width: 250px; height: 250px; }
 .table-gallery tr { position: relative; width: auto; margin: auto; }
 .table-gallery tr:first-child { display: none; }
 .table-gallery tr td { display: block; cursor: pointer; }
+.table-gallery section,
 .table-gallery tr td.number,
 .table-gallery tr td.date,
 .table-gallery tr td.counter { display: none; }
+
+.table-webzine table { display: none; }
+.table-webzine section { margin: 50px auto 0; }
 
 .modal-wrap { position: fixed; left: 0; right: 0; top: 0; bottom: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); }
 .modal-wrap .modal-box { position: absolute; left: 0; right: 0; top: 0; bottom: 0; width: 350px; height: 500px; margin: auto; padding: 30px; background-color: #fff; border-radius: 20px; }

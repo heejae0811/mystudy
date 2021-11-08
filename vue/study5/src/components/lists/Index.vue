@@ -1,30 +1,17 @@
 <template>
     <div>
-        <button 
-            v-on:click="listOpen"
-            class="btn-list"
-        >리스트</button>
+        <button v-on:click="listOpen">리스트</button>
 
-        <button 
-            v-on:click="galleryOpen"
-            class="btn-gallery"
-        >갤러리</button>
+        <button v-on:click="galleryOpen">갤러리</button>
 
-        <button 
-            v-on:click="listOpen"
-            class="btn-webzine"
-        >웹진</button>
+        <button v-on:click="webzineOpen">웹진</button>
 
 
-        <list
-            v-bind:class="{ 'table-list': isList,  'table-gallery': isGallery }"
-        ></list>
+        <list v-bind:class="{ 'table-list': isList,  'table-gallery': isGallery, 'table-webzine': isWebzine }"></list>
 
-        <gallery
-        ></gallery>
+        <gallery></gallery>
         
-        <webzine
-        ></webzine>
+        <webzine></webzine>
     </div>
 </template>
 
@@ -43,18 +30,30 @@ export default({
     data(){
         return{
             isList: true,
-            isGallery: false
+            isGallery: false,
+            isWebzine: false
         }   
     },
     methods: {
         listOpen: function(){
             this.isList = true;
             this.isGallery = false;
+            this.isWebzine = false;
         },
         galleryOpen: function(){
             this.isList = false;
             this.isGallery = true;
+            this.isWebzine = false;
         },
+        webzineOpen: function(){
+            this.isList = false;
+            this.isGallery = false;
+            this.isWebzine = true;
+        }
     }
 })
 </script>
+
+<style>
+button { margin: 40px 10px 0 0; }
+</style>
