@@ -17,12 +17,17 @@
                 <td class="num">{{ item.num }}</td>
                 <td class="title">{{ item.title }}</td>
                 <td class="writer">{{ item.writer }}</td>
-                <td class="date">{{ new Date() | moment('YYYY-MM-DD HH:mm:ss') }}</td>
+                <!-- 날짜: day.js 사용 -->
+                <!-- TODO :: 새로고침해도 시간 안바뀌게 할 수 있나.. -->
+                <td class="date">{{ $date().format('YYYY/MM/DD hh:mm:ss') }}</td>
                 <td class="counter">{{ item.count }}</td>
             </tr>
         </table>
 
-        <section>웹진 페이지 입니다. 그냥 이렇게 해봤습니다.</section>
+        <section>
+            웹진 페이지 입니다. 그냥 이렇게 해봤습니다. <br>
+            날짜 시간 계산 라이브러리 moment.js는 더 이상 지원하지 않기 때문에 day.js를 사용하면 된다.
+        </section>
 
         <div
             v-if="modalData.visible"
@@ -39,6 +44,7 @@
                 <p><span>제목 : </span> {{ modalData.title }}</p>
                 <p><img v-bind:src="modalData.thumbnail"></p>
                 <p><span>글쓴이 : </span> {{ modalData.writer }}</p>
+                <!-- 날짜: moment.js 사용 -->
                 <p><span>날짜 : </span> {{ new Date() | moment('YYYY-MM-DD HH:mm:ss') }}</p>
                 <p><span>조회수 : </span> {{ modalData.count }}</p>
             </div>
@@ -47,10 +53,13 @@
 </template>
 
 <script>
+import days from 'days';
+
 export default ({
     name: 'list',
+    component: { days },
     data() {
-        return {            
+        return {       
             userData: [
                 {
                     num: 1,
@@ -79,7 +88,7 @@ export default ({
                 },
                 {
                     num: 4,
-                    title: '어렵다',
+                    title: '코딩 컨벤션 지키기!!',
                     thumbnail: require('@/assets/images/tree04.jpg'),
                     writer: '정주호',
                     date: '',
@@ -123,10 +132,10 @@ img { width: 250px; height: 250px; }
 
 .table-gallery table { display: flex; justify-content: space-between; margin: 50px auto 0; }
 .table-gallery tr { position: relative; width: auto; margin: auto; }
-.table-gallery tr:first-child { display: none; }
 .table-gallery tr td { display: block; cursor: pointer; }
 .table-gallery section,
-.table-gallery tr td.number,
+.table-gallery tr:first-child,
+.table-gallery tr td.num,
 .table-gallery tr td.date,
 .table-gallery tr td.counter { display: none; }
 
