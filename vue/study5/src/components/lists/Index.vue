@@ -6,7 +6,7 @@
 
         <button v-on:click="webzineOpen">웹진</button>
 
-        <list v-bind:class="{ 'table-list': isList,  'table-gallery': isGallery, 'table-webzine': isWebzine }"></list>
+        <list v-bind:class="{ 'table-list': isList, 'table-gallery': isGallery, 'table-webzine': isWebzine }"></list>
     </div>
 </template>
 
@@ -24,6 +24,7 @@ export default ({
         }   
     },
     methods: {
+        // TODO :: 뭔가 함수 1개로 할 수 있을 것 같은데...
         listOpen: function() {
             this.isList = true;
             this.isGallery = false;
