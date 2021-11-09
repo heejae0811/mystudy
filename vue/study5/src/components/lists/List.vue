@@ -18,7 +18,7 @@
                 <td class="title">{{ item.title }}</td>
                 <td class="writer">{{ item.writer }}</td>
                 <!-- 날짜: day.js 사용 -->
-                <!-- TODO :: 새로고침해도 시간 안바뀌게 할 수 있나.. -->
+                <!-- FIXME :: 새로고침해도 시간 안바뀌게 할 수 있나.. -->
                 <td class="date">{{ $date().format('YYYY/MM/DD hh:mm:ss') }}</td>
                 <td class="counter">{{ item.count }}</td>
             </tr>
@@ -64,7 +64,6 @@ export default ({
                 {
                     num: 1,
                     title: '뷰 5주차 과제',
-                    // FIXME :: require를 사용안하고 img src 값을 가져오는 방법은??
                     thumbnail: require('@/assets/images/tree01.jpg'),
                     writer: '김하영',
                     date: '',

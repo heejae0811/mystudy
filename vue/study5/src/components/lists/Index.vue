@@ -24,7 +24,7 @@ export default ({
         }   
     },
     methods: {
-        // TODO :: 뭔가 함수 1개로 할 수 있을 것 같은데...
+        // FIXME :: 뭔가 함수 1개로 할 수 있을 것 같은데...
         listOpen: function() {
             this.isList = true;
             this.isGallery = false;
