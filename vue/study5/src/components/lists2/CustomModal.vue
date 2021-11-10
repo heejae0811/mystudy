@@ -1,14 +1,20 @@
 <template>
-    <div class="modal-wrap">
-        <div class="modal-box">
-            <span class="modal-close">&times;</span>
+    <div
+        class="modal-wrap">
+        <div
+            v-for="(item, key) in userData" :key="key"
+            class="modal-box"
+        >
+            <span 
+                class="modal-close"
+            >&times;</span>
             
-            <p><span>번호 : </span> {{ num }}</p>
-            <p><span>제목 : </span> {{ title }}</p>
-            <p><img v-bind:src="thumbnail"></p>
-            <p><span>글쓴이 : </span> {{ writer }}</p>
-            <p><span>날짜 : </span> {{ date }}</p>
-            <p><span>조회수 : </span> {{ count }}</p>
+            <p><span>번호 : </span> {{ item.num }}</p>
+            <p><span>제목 : </span> {{ item.title }}</p>
+            <p><img v-bind:src="item.thumbnail"></p>
+            <p><span>글쓴이 : </span> {{ item.writer }}</p>
+            <p><span>날짜 : </span> {{ item.date }}</p>
+            <p><span>조회수 : </span> {{ item.count }}</p>
         </div>
     </div>
 </template>
@@ -16,20 +22,11 @@
 <script>
 export default ({
     name: 'CustomModal',
-    data() {
-        return {
-            modalVisible: true
+    props: {
+        userData: {
+            type: Array
         }
-    },
-    props: [    
-        'num',
-        'title',
-        'thumbnail',
-        'writer',
-        'date',
-        'count',
-        'modalClose'
-    ]
+    }
 });
 </script>
 

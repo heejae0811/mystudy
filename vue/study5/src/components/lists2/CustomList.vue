@@ -11,13 +11,13 @@
                 <th>조회수</th>
             </tr>
             <tr
-                v-on:click="modalOpen()"
+                v-for="(item, key) in userData" :key="key"
             >
-                <td class="num">{{ num }}</td>
-                <td class="title">{{ title }}</td>
-                <td class="writer">{{ writer }}</td>
+                <td class="num">{{ item.num }}</td>
+                <td class="title">{{ item.title }}</td>
+                <td class="writer">{{ item.writer }}</td>
                 <td class="date">{{ $date().format('YYYY/MM/DD hh:mm:ss') }}</td>
-                <td class="counter">{{ count }}</td>
+                <td class="counter">{{ item.count }}</td>
             </tr>
         </table>
     </div>
@@ -26,15 +26,16 @@
 <script>
 export default ({
     name: 'CustomList',
-    props: [
-        'userData',
-        'num',
-        'title',
-        'thumbnail',
-        'writer',
-        'date',
-        'count'
-    ]
+    props: {
+        userData: {
+            type: Array
+        }
+    },
+    methods: {
+        modalOpen: function() {
+            
+        }
+    }
 });
 </script>
 
