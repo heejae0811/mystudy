@@ -11,6 +11,7 @@
         <custom-list
             v-show="listVisible"
             v-bind:userData="userData"
+            v-on:click="modalVisible = true"
         ></custom-list>
 
         <custom-gallery
@@ -23,12 +24,35 @@
             v-bind:userData="userData"
         ></custom-webzine>
 
-
-        <!-- FIXME :: 모달을 컴포넌트로 가져왔을 때 클릭 이벤트를 어떻게 적용하나요? props로 이벤트 전달?? -->
+        <!-- FIXME :: 팝업모달을 컴포넌트로 가져왔을 때 클릭 이벤트를 어떻게 적용하나요? 어제 설명 들었는데 모르겠습니다 ㅠㅠ props, emit, sync... -->
         <custom-modal
-            v-show="modalVisible"
+            :show.sync="modalVisible"
             v-bind:userData="userData"
         ></custom-modal>
+        
+        <!--
+        <div
+            v-show="modalVisible"
+            v-on:click.self="modalOpen"
+            class="modal-wrap">
+            <div
+                v-for="(item, key) in userData" :key="key"
+                class="modal-box"
+            >
+                <span
+                    v-on:click="modalOpen"
+                    class="modal-close"
+                >&times;</span>
+                
+                <p><span>번호 : </span> {{ item.num }}</p>
+                <p><span>제목 : </span> {{ item.title }}</p>
+                <p><img v-bind:src="item.thumbnail"></p>
+                <p><span>글쓴이 : </span> {{ item.writer }}</p>
+                <p><span>날짜 : </span> {{ $date().format('YYYY/MM/DD hh:mm:ss') }}</p>
+                <p><span>조회수 : </span> {{ item.count }}</p>
+            </div>
+        </div>
+        -->
     </div>
 </template>
 
@@ -40,12 +64,14 @@ import CustomModal from '@/components/lists2/CustomModal.vue';
 
 export default ({
     name: 'List2',
+
     components: {
         CustomList,
         CustomGallery,
         CustomWebzine,
         CustomModal
     },
+
     data() {
         return {
             listVisible: true,
@@ -88,6 +114,7 @@ export default ({
             ],
         }
     },
+    
     methods: {
         listOpen: function() {
             this.listVisible = true;
@@ -106,6 +133,7 @@ export default ({
         },
         modalOpen: function() {
             this.modalVisible = !this.modalVisible;
+            this.$emit('modalVisible');
         }
 
     }

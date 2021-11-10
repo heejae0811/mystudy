@@ -19,6 +19,7 @@
 <script>
 export default ({
     name: 'CustomWebzine',
+    
     props: [    
         'num',
         'title',

@@ -18,6 +18,7 @@
 <script>
 export default ({
     name: 'CustomGallery',
+    
     props: {
         userData: {
             type: Array

@@ -26,14 +26,10 @@
 <script>
 export default ({
     name: 'CustomList',
+
     props: {
         userData: {
             type: Array
-        }
-    },
-    methods: {
-        modalOpen: function() {
-            
         }
     }
 });
