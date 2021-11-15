@@ -21,7 +21,24 @@
 </template>
 
 <script>
-  
+new Vue({
+  // state : 컴포넌트 간에 공유할 data
+  data() {
+    return {
+      counter: 0
+    }
+  },
+  // view : 데이터가 표현될 template
+  template: `
+    <div>{{ counter }}</div>
+  `,
+  // actions : 사용자의 입력에 따라 반응할 methods
+  methods: {
+    increment() {
+      this.counter++
+    }
+  }
+})
 </script>
 
 <style>

@@ -5,6 +5,10 @@ import App from './App.vue'
 
 Vue.use(Vuex)
 
+export const store = new Vuex.Store({
+  
+})
+
 Vue.config.productionTip = false
 
 new Vue({
