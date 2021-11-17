@@ -1,21 +1,21 @@
 <template>
     <div
-        v-if="show"
-        v-on:click.self="$emit('update:show', false)"
-        class="modal-wrap">
-        <div
-            v-for="(item, key) in userData" :key="key"
-            v-on:click="$emit('update:show', false)"
-            class="modal-box"
-        >
-            <span class="modal-close">&times;</span>
+        v-show="modalVisible"
+        v-on:click.self="modalVisible = false"
+        class="modal-wrap"
+    >
+        <div class="modal-box">
+            <span
+                v-on:click="modalVisible = false"
+                class="modal-close"
+            >&times;</span>
             
-            <p><span>번호 : </span> {{ item.num }}</p>
-            <p><span>제목 : </span> {{ item.title }}</p>
-            <p><img v-bind:src="item.thumbnail"></p>
-            <p><span>글쓴이 : </span> {{ item.writer }}</p>
+            <p><span>번호 : </span> {{ modalData.num }}</p>
+            <p><span>제목 : </span> {{ modalData.title }}</p>
+            <p><img v-bind:src="modalData.thumbnail"></p>
+            <p><span>글쓴이 : </span> {{ modalData.writer }}</p>
             <p><span>날짜 : </span> {{ $date().format('YYYY/MM/DD hh:mm:ss') }}</p>
-            <p><span>조회수 : </span> {{ item.count }}</p>
+            <p><span>조회수 : </span> {{ modalData.count }}</p>
         </div>
     </div>
 </template>
@@ -23,19 +23,13 @@
 <script>
 export default ({
     name: 'CustomModal',
-
     props: {
         userData: {
             type: Array
         },
-        show: {
-            type: Boolean,
-            default: false
+        modalData: {
+            type: Object
         }
-    },
-
-    methods: {
-
     }
 });
 </script>

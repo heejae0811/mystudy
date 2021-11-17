@@ -5,54 +5,61 @@
         <button v-on:click="webzineOpen">웹진</button>
 
         <!--
-            커스텀 태그는 말 그대로 커스텀 한 것 이어서 클릭 이벤트를 걸어도 메서드로 받기 때문에 native가 필요하다.
-            v-on:click.native="" 
+            3. 자식 컴포넌트(CustomList.vue)에서 emit으로 받은 data를 부모-자식 간 양방향 바인딩 해야 하기 때문에 v-model를 사용한다.
+
+            커스텀 태그는 말 그대로 커스텀 이어서 클릭 이벤트를 걸어도 메서드로 받기 때문에 native가 필요하다.
         -->
         <custom-list
             v-show="listVisible"
             v-bind:userData="userData"
-            v-on:click="modalVisible = true"
+            v-model="modalData"
+            v-on:click.native="modalOpen()"
         ></custom-list>
 
         <custom-gallery
             v-show="galleryVisible"
             v-bind:userData="userData"
+            v-model="modalData"
+            v-on:click.native="modalOpen()"
         ></custom-gallery>
 
         <custom-webzine
             v-show="webzineVisible"
             v-bind:userData="userData"
+            v-model="modalData"
+            v-on:click="modalOpen()"
         ></custom-webzine>
 
-        <!-- FIXME :: 팝업모달을 컴포넌트로 가져왔을 때 클릭 이벤트를 어떻게 적용하나요? 어제 설명 들었는데 모르겠습니다 ㅠㅠ props, emit, sync... -->
-        <custom-modal
-            :show.sync="modalVisible"
-            v-bind:userData="userData"
-        ></custom-modal>
-        
         <!--
+        <custom-modal
+            v-model="modalData"
+            v-on:click="modalOpen()"
+        ></custom-modal>
+        -->
+
         <div
             v-show="modalVisible"
             v-on:click.self="modalOpen"
-            class="modal-wrap">
-            <div
-                v-for="(item, key) in userData" :key="key"
-                class="modal-box"
-            >
+            class="modal-wrap"
+        >
+            <div class="modal-box">
                 <span
                     v-on:click="modalOpen"
                     class="modal-close"
                 >&times;</span>
                 
-                <p><span>번호 : </span> {{ item.num }}</p>
-                <p><span>제목 : </span> {{ item.title }}</p>
-                <p><img v-bind:src="item.thumbnail"></p>
-                <p><span>글쓴이 : </span> {{ item.writer }}</p>
+                <!--
+                    4. 자식 컴포넌트(CustomList.vue)에서 emit으로 받은 data를 modalData에서 가져온다.
+                    v-for로 userData를 받아오는 것이 아니라 자식 컴포넌트에서 emit으로 보낸 item 값이 필요하다.
+                -->
+                <p><span>번호 : </span> {{ modalData.num }}</p>
+                <p><span>제목 : </span> {{ modalData.title }}</p>
+                <p><img v-bind:src="modalData.thumbnail"></p>
+                <p><span>글쓴이 : </span> {{ modalData.writer }}</p>
                 <p><span>날짜 : </span> {{ $date().format('YYYY/MM/DD hh:mm:ss') }}</p>
-                <p><span>조회수 : </span> {{ item.count }}</p>
+                <p><span>조회수 : </span> {{ modalData.count }}</p>
             </div>
         </div>
-        -->
     </div>
 </template>
 
@@ -60,7 +67,7 @@
 import CustomList from '@/components/lists2/CustomList.vue';
 import CustomGallery from '@/components/lists2/CustomGallery.vue';
 import CustomWebzine from '@/components/lists2/CustomWebzine.vue';
-import CustomModal from '@/components/lists2/CustomModal.vue';
+//import CustomModal from '@/components/lists2/CustomModal.vue';
 
 export default ({
     name: 'List2',
@@ -69,7 +76,7 @@ export default ({
         CustomList,
         CustomGallery,
         CustomWebzine,
-        CustomModal
+        //CustomModal
     },
 
     data() {
@@ -78,6 +85,7 @@ export default ({
             galleryVisible: false,
             webzineVisible: false,
             modalVisible: false,
+            modalData: {}, // emit으로 받은 data가 들어가는 곳
             userData: [
                 {
                     num: 1,
@@ -133,9 +141,11 @@ export default ({
         },
         modalOpen: function() {
             this.modalVisible = !this.modalVisible;
-            this.$emit('modalVisible');
         }
+    },
 
+    mounted() {
+        // mounted에서 console.log 확인 가능
     }
 });
 </script>

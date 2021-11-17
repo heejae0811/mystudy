@@ -4,7 +4,11 @@
 
         <div class="gallery">
             <ul>
-                <li v-for="(item, key) in userData" :key="key">
+                <li 
+                    v-for="(item, key) in userData"
+                    :key="key"
+                    @click="$emit('input', item); $emit('click')"
+                >
                     <img v-bind:src="item.thumbnail">
                     <p>제목 : {{ item.title }}</p>
                     <p>작성자 : {{ item.writer }}</p>
@@ -18,7 +22,6 @@
 <script>
 export default ({
     name: 'CustomGallery',
-    
     props: {
         userData: {
             type: Array
@@ -29,5 +32,5 @@ export default ({
 
 <style>
 .gallery ul { display: flex; justify-content: space-between; align-items: center; width: 100%; margin: 0; padding: 0; }
-.gallery ul li { width: 25%; list-style: none; }
+.gallery ul li { width: 25%; list-style: none; cursor: pointer; }
 </style>
