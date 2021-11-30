@@ -1,19 +1,19 @@
 <template>
     <div>
         <button
-            v-on:click="clearAllTodoList"
-        >Clear All Todo List</button>
+            v-on:click="clearTodo"
+        >Clear All</button>
     </div>    
 </template>
 
 <script>
 export default ({
     name: 'TodoFooter',
-    methods: {
-        clearAllTodoList: function() {
-            localStorage.clear();
-        }
-    }
+    // methods: {
+    //     clearTodo: function() {
+    //         localStorage.clear();
+    //     }
+    // }
 });
 </script>
 

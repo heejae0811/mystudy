@@ -2,39 +2,50 @@
     <div>
         <ul>
             <li 
-                v-for="(todoList, index) in todoLists"
-                :key="index"
+                v-for="(todoItem, index) in propsdata"
+                v-bind:key="todoItem.item"
             >
-                {{ todoLists }}
+                {{ todoItem.item }}
                 <button
-                    v-on:click="removeTodoList"
-                >delete</button>
+                    v-on:click="removeTodo(todoItem, index)"
+                >Delete</button>
             </li>
         </ul>
+
+        <p> {{ this.$store.getters.doneTodos }} </p>
     </div>
 </template>
 
 <script>
 export default ({
     name: 'TodoList',
-    data() {
-        return {
-            todoLists: []
-        }
-    },
+    // data() {
+    //     return {
+    //         todoItems: []
+    //     }
+    // },
+    // created() {
+    //     if (localStorage.length > 0) {
+    //         for (let i = 0; i < localStorage.length; i++ ){
+    //             if(localStorage.key(i) !== 'loglevel:webpack-dev-serve') {
+    //                 this.todoItems.push(localStorage.getItem(localStorage.key(i)));
+    //             }
+    //         }
+    //     }
+    // },
+    props: [
+        'propsdata'
+    ],
     methods: {
-        removeTodoList: function(todoList, index) {
-            localStorage.removeItem(todoList);
-            this.todoLists.splice(index, 1);
+        removeTodo: function(todoItem, index) {
+            // localStorage.removeItem(todoItem.item);
+            // this.todoLists.splice(index, 1);
+            this.$emit('removeItem', todoItem, index);
         }
     },
-    created: function() {
-        if(localStorage.length > 0) {
-            for(let i = 0; i < localStorage.length; i++) {
-                this.todoLists.push(localStorage.key(i));
-            }
-        }
-    }
+    // this.todoItems.push(
+    //     JSON.parse(localStorage.getItem(localStorage.key(i)))
+    // );
 });
 </script>
 
