@@ -19,18 +19,6 @@ export default ({
         return {
             newTodoItem: ''
         }
-    },
-    methods: {
-        addTodoItem() {
-            if(this.newTodoItem !== '') {
-                // localStorage.setItem(this.newTodoItem, this.newTodoItem);
-                this.$emit('addItem', this.newTodoItem);
-                this.clearInput();
-            }
-        },
-        clearInput() {
-            this.newTodoItem = '';
-        }
     }
 });
 </script>

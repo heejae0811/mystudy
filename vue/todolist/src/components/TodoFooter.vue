@@ -9,11 +9,6 @@
 <script>
 export default ({
     name: 'TodoFooter',
-    // methods: {
-    //     clearTodo: function() {
-    //         localStorage.clear();
-    //     }
-    // }
 });
 </script>
 
