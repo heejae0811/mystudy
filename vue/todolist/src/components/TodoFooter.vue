@@ -1,9 +1,9 @@
 <template>
     <div>
         <button
-            v-on:click="clearTodo"
+            v-on:click="$store.commit('clearAllTodo')"
         >Clear All</button>
-    </div>    
+    </div>
 </template>
 
 <script>

@@ -2,14 +2,9 @@
   <div id="app">
       <todo-header></todo-header>
 
-      <todo-input
-        v-on:addItem="addOneItem"
-      ></todo-input>
+      <todo-input></todo-input>
 
-      <todo-list
-        v-bind:propsdata="todoItems"
-        v-on:removeItem="removeOneItem"
-      ></todo-list>
+      <todo-list></todo-list>
 
       <todo-footer></todo-footer>
   </div>
@@ -29,35 +24,6 @@ export default ({
     TodoList,
     TodoFooter
   },
-  data() {
-    return {
-      todoItems: []
-    }
-  },
-  created() {
-    if (localStorage.length > 0) {
-      for (let i = 0; i < localStorage.length; i++) {
-        if (localStorage.key(i) !== "loglevel:webpack-dev-server") {
-          this.todoItems.push(
-            JSON.parse(localStorage.getItem(localStorage.key(i)))
-          );
-        }
-      }
-    }
-  },
-  methods: {
-    addOneItem(todoItem) {
-      localStorage.setItem(todoItem, todoItem);
-    },
-    removeOneItem(todoItem, index) {
-      localStorage.removeItem(todoItem.item);
-      this.todoItems.splice(index, 1);
-    },
-    clearAllItem() {
-      this.todoTimes = [];
-      localStorage.clear();
-    }
-  }
 });
 </script>
 

@@ -3,30 +3,32 @@
         <ul>
             <li 
                 v-for="(todoItem, index) in this.$store.state.todoItems"
-                v-bind:key="todoItem.item"
+                v-bind:key="index"
             >
-                {{ todoItem.item }}
+                {{ todoItem }}
                 <button
-                    v-on:click="removeTodo(todoItem, index)"
+                    v-on:click="$store.commit('removeTodo')"
                 >Delete</button>
             </li>
         </ul>
 
-        <p> {{ this.$store.getters.doneTodos }} </p>
+        <ul>
+            <li 
+                v-for="(todoItem2, index) in this.$store.state.todoItems2"
+                v-bind:key="index"
+            >
+                {{ todoItem2 }}
+                <button
+                    v-on:click="$store.commit('removeTodo')"
+                >Delete</button>
+            </li>
+        </ul>
     </div>
 </template>
 
 <script>
 export default ({
     name: 'TodoList',
-    props: [
-        'propsdata'
-    ],
-    methods: {
-        removeTodo: function(todoItem, index) {
-            this.$emit('removeItem', todoItem, index);
-        }
-    },
 });
 </script>
 

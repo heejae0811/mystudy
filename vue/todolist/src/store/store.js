@@ -7,45 +7,44 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-Vue.use(Vuex)
-
-const storage = {
-    fetch() {
-        const arr = [];
-
-        if(localStorage.length > 0) {
-            for(let i = 0; i < localStorage.length; i++) {
-                if (localStorage.key(i) !== 'loglevel:webpack-dev-server') {
-                    arr.push(
-                        JSON.parse(localStorage.getItem(localStorage.key(i)))
-                    );
-                }
-            }
-        }
-        return arr;
-    }
-}
+Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
-        todoItems: storage.fetch(),
-    },
-    getter: {
-        doneTodos: state => {
-            return state.todos.filter(todo => todo.done)
-        }
+        todoItems: [
+            {
+                id: 1,
+                title: '할 일 1',
+                content: '공부하기 싫다'
+            },
+            {
+                id: 2,
+                title: '할 일 2',
+                content: '너무 어렵다'
+            }
+        ],
+        newTodoItems: '',
+        todoItems2: []
     },
     mutations: {
-        addOneItem(todoItem) {
-            localStorage.setItem(todoItem, todoItem);
+        addTodo(state) {
+            localStorage.setItem(state.newTodoItems, state.newTodoItems);
+            state.newTodoItems = '';
         },
-        removeOneItem(todoItem, index) {
-            localStorage.removeItem(todoItem.item);
-            this.todoItems.splice(index, 1);
+        removeTodo(state, index) {
+            state.todoItems.splice(index, 1);
         },
-        clearAllItem() {
-            this.todoTimes = [];
-            localStorage.clear();
+        clearAllTodo(state) {
+            state.todoItems = [];
+        }
+    },
+    action: function () {
+        if (localStorage.length > 0) {
+            for (var i = 0; i < localStorage.length; i ++) {
+                if (localStorage.key(i) !== 'loglevel:webpack-dev-server') {
+                    this.todoItems2.push(localStorage.key(i));
+                }
+            }
         }
     }
 })

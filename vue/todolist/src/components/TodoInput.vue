@@ -3,11 +3,11 @@
         <input
             type="text"
             placeholder="write todo"
-            v-model="newTodoItem"
-            v-on:keyup.enter="addTodoList"
+            v-model="$store.state.newTodoItems"
+            v-on:keyup.enter="$store.commit('addTodo')"
         >
         <button 
-            v-on:click="addTodoItem"
+            v-on:click="$store.commit('addTodo')"
         >Add</button>
     </div>
 </template>
@@ -15,11 +15,6 @@
 <script>
 export default ({
     name: 'Input',
-    data() {
-        return {
-            newTodoItem: ''
-        }
-    }
 });
 </script>
 
