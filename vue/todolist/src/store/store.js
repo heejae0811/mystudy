@@ -30,16 +30,17 @@ const storage = {
 
 export const store = new Vuex.Store({
     state: {
-        todoItems: storage.fetch(),
+        todoItems: storage.fetch()
     },
     mutations: {
         // 변이에 대해 payload 라고 하는 추가 전달인자를 사용할 수 있다.
         addTodo(state, payload) {
             state.todoItems.push(payload);
-            localStorage.setItem(JSON.stringify(state.todoItems), JSON.stringify(state.todoItems));
+            localStorage.setItem('todo-list', JSON.stringify(state.todoItems))
         },
         removeTodo(state, payload) {
             state.todoItems.splice(payload, 1);
+            // localStorage.removeItem('todo-list')
         },
         clearAllTodo(state) {
             state.todoItems = [];

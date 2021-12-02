@@ -22,12 +22,12 @@ export default ({
     },
     methods: {
         addTodoMethods() {
-            let item = {
+            let todoList = {
                 todo: this.newTodo,
                 date: '날짜'
             }
             this.newTodo = '';
-            this.$store.dispatch('addTodoAction', item);
+            this.$store.dispatch('addTodoAction', todoList);
         }
     }
 });
