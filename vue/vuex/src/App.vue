@@ -1,7 +1,7 @@
 <template>
   <div id="app">
       <button
-        v-on:click="$store.commit('increment')"
+        v-on:click="$store.commit('increment', 10)"
       >증가</button>
       <button
         v-on:click="$store.commit('decrement')"
