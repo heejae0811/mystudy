@@ -1,3 +1,7 @@
+<!--
+    commit으로 mutations의 함수를 호출할 수 있다.
+    v-on:click="$store.commit('removeTodo')"
+-->
 <template>
     <div>
         <ul>
@@ -7,7 +11,7 @@
             >
                 {{ todoItem }}
                 <button
-                    v-on:click="$store.commit('removeTodo')"
+                    v-on:click="removeTodoMethods(todoItem)"
                 >Delete</button>
             </li>
         </ul>
@@ -17,6 +21,11 @@
 <script>
 export default ({
     name: 'TodoList',
+    methods: {
+        removeTodoMethods(todoItem) {
+            this.$store.dispatch('removeTodoAction', todoItem);
+        }
+    }
 });
 </script>
 
