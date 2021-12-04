@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="todo-input">
         <input
             type="text"
             placeholder="write todo"
@@ -34,5 +34,28 @@ export default ({
 </script>
 
 <style>
+.todo-input {
+    display: flex;
+    justify-content: space-between;
+    margin: 5vw auto;
+}
+.todo-input input {
+    width: 78%;
+    height: 12vw;
+    border-radius: 1vw;
+    font-size: 4vw;
+    line-height: 12vw;
+    text-indent: 2vw;
+}
 
+.todo-input button {
+    width: 20%;
+    height: 12vw;
+    border-radius: 1vw;
+    background-color: #000;
+    color: #fff;
+    font-size: 4vw;
+    line-height: 12vw;
+    text-align: center;
+}
 </style>

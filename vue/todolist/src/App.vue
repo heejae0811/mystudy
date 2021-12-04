@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div class="content">
       <todo-header></todo-header>
 
       <todo-input></todo-input>
@@ -9,6 +10,7 @@
       <todo-list></todo-list>
 
       <todo-footer></todo-footer>
+    </div>
   </div>
 </template>
 
@@ -32,5 +34,18 @@ export default ({
 </script>
 
 <style>
+@import './assets/css/common.css';
 
+#app {
+  width: 100%;
+  min-height: 100vw;
+  background: rgb(238,174,202);
+  background: linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+
+.content {
+  width: auto;
+  margin: 0 auto;
+  padding: 0 5vw;
+}
 </style>
