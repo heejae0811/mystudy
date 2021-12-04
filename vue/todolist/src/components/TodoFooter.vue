@@ -1,9 +1,6 @@
 <template>
     <div>
-        <!-- commit을 이용해 mutations에 접근 -->
-        <button
-            v-on:click="$store.commit('clearAllTodo')"
-        >Clear All</button>
+        <footer>Made by HeeJae(Protein)</footer>
     </div>
 </template>
 

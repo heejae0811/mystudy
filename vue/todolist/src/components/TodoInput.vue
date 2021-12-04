@@ -24,7 +24,7 @@ export default ({
         addTodoMethods() {
             let todoList = {
                 todo: this.newTodo,
-                date: '날짜'
+                date: this.$date().format('YYYY.MM.DD')
             }
             this.newTodo = '';
             this.$store.dispatch('addTodoAction', todoList);

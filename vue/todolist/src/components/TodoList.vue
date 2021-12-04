@@ -6,15 +6,22 @@
     <div>
         <ul>
             <li 
-                v-for="(todoItem, index) in this.$store.state.todoItems"
+                v-for="(todoList, index) in this.$store.state.todoItems"
                 v-bind:key="index"
             >
-                {{ todoItem }}
+                <p class="todo-list">{{ todoList.todo }}</p>
+                <p class="todo-date">{{ todoList.date }}</p>
+                
                 <button
-                    v-on:click="removeTodoMethods(todoItem)"
+                    v-on:click="removeTodoMethods(todoList)"
                 >Delete</button>
             </li>
         </ul>
+
+        <!-- commit을 이용해 mutations에 접근 -->
+        <button
+            v-on:click="$store.commit('clearAllTodo')"
+        >Clear All</button>
     </div>
 </template>
 

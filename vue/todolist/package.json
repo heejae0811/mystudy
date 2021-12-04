@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "dayjs": "^1.10.7",
     "vue": "^2.6.11",
     "vuex": "^3.6.2",
     "vuex-persistedstate": "^4.1.0"

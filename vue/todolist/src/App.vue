@@ -4,6 +4,8 @@
 
       <todo-input></todo-input>
 
+      <todo-order></todo-order>
+
       <todo-list></todo-list>
 
       <todo-footer></todo-footer>
@@ -13,6 +15,7 @@
 <script>
 import TodoHeader from './components/TodoHeader.vue';
 import TodoInput from './components/TodoInput.vue';
+import TodoOrder from './components/TodoOrder.vue';
 import TodoList from './components/TodoList.vue';
 import TodoFooter from './components/TodoFooter.vue';
 
@@ -21,6 +24,7 @@ export default ({
   components: {
     TodoHeader,
     TodoInput,
+    TodoOrder,
     TodoList,
     TodoFooter
   },
