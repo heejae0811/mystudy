@@ -36,7 +36,6 @@ export default ({
     display: flex;
     justify-content: space-between;
     width: 100%;
-    min-height: 12vw;
     margin-bottom: 2vw;
     border-radius: 1vw;
     background-color: #fff;
@@ -44,7 +43,7 @@ export default ({
 
 .todo-list li p {
     width: 78%;
-    padding: 2vw;
+    padding: 3vw 2vw;
     font-size: 4vw;
 }
 

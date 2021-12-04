@@ -60,7 +60,7 @@ iframe, embed, object, video { max-width: 100%; }
 /* IPHONE */
 input:disabled, textarea:disabled { opacity: 1; -webkit-text-fill-color: inherit; }
 
-input[type="text"], input[type="password"], textarea { -webkit-appearance: none; border-radius: 0; }
+input[type="text"], input[type="password"], textarea { -webkit-appearance: none; }
 
 /* ie input icon remove */
 input::-ms-clear { display: none; width: 0; height: 0; }
@@ -94,7 +94,7 @@ input::-ms-reveal { display: none; width: 0; height: 0; }
 
 @font-face { font-family: 'NotoSansKR'; font-style: normal; font-weight: 900; src: url("../font/NotoSansKR-Black.eot"); src: local("Noto Sans KR Black"), local("Noto Sans Black"), local("NotoSansKR-Black"), url("../font/NotoSansKR-Black.eot?#iefix") format("embedded-opentype"), url("../font/NotoSansKR-Black.woff2") format("woff2"), url("../font/NotoSansKR-Black.woff") format("woff"); } */
 
-html, body { font-family: 'NotoSansKR', sans-serif; font-weight: 300; letter-spacing: -.4px; -webkit-font-smoothing: antialiased; color: #333; }
+html, body { height: 100%; font-family: 'NotoSansKR', sans-serif; font-weight: 300; letter-spacing: -.4px; -webkit-font-smoothing: antialiased; color: #333; }
 
 /*
 * File		: button.css

@@ -28,12 +28,13 @@ export default ({
 
 .select-box select {
     width: 20%;
-    height: 6vw;
+    height: 12vw;
     outline: none;
+    border: none;
     border-radius: 1vw;
     background-color: #fff;
-    font-size: 2vw;
-    line-height: 6vw;
+    font-size: 4vw;
+    line-height: 12vw;
     text-indent: 1vw;
 }
 
