@@ -46,8 +46,9 @@ export const store = new Vuex.Store({
                 state.todoItems.indexOf(payload),
                 1
             );
-
-            // console.log(index);
+        },
+        completeTodo(state){
+            state.todoItems.complete = !state.todoItems.complete
         },
         clearAllTodo(state) {
             state.todoItems = [];
@@ -56,7 +57,7 @@ export const store = new Vuex.Store({
         },
         modalOpen(state) {
             state.modalVisible = !state.modalVisible;
-        }
+        },
     },
     // 상태를 변이시키는 대신 액션으로 변이에 대한 커밋을 한다.
     actions: {
@@ -66,6 +67,9 @@ export const store = new Vuex.Store({
         },
         removeTodoAction({ commit }, payload) {
             commit('removeTodo', payload);
+        },
+        completeTodoAction({commit}, payload) {
+            commit('completeTodo', payload);
         }
     },
     // FIXME :: 플러그인이 없으면 새로고침 할 때 마다 데이터가 바뀌는데 어떻게 수정해야할까?

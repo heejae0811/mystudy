@@ -5,11 +5,13 @@
     >
         <div class="modal-content">
             <p>전체 삭제 하시겠습니까?</p>
+
             <button 
                 type="button"
                 class="btn-yes"
                 v-on:click="$store.commit('clearAllTodo')"
             >Yes</button>
+
             <button 
                 type="button"
                 class="btn-no"
@@ -21,10 +23,7 @@
 
 <script>
 export default ({
-    name: 'TodoModal',
-    methods: {
-        
-    }
+    name: 'TodoModal'
 });  
 </script>
 

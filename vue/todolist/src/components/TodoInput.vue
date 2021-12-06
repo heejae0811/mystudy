@@ -2,7 +2,7 @@
     <div class="todo-input">
         <input
             type="text"
-            placeholder="write todo"
+            placeholder="Write todo"
             v-model="newTodo"
             v-on:keyup.enter="addTodoMethods"
         >
@@ -17,7 +17,8 @@ export default ({
     name: 'Input',
     data() {
         return {
-            newTodo: ''
+            newTodo: '',
+            complete: false
         }
     },
     methods: {
@@ -29,8 +30,9 @@ export default ({
 
             // FIXME :: 지역 변수를 만들 필요가 없다.
             this.$store.dispatch('addTodoAction', {
+                complete: this.complete,
                 todo: this.newTodo,
-                date: this.$date().format('YYYY.MM.DD')
+                date: this.$date().format('YYYY.MM.DD'),
             });
 
             this.newTodo = '';

@@ -2,8 +2,12 @@
     <div class="select-box">
         <select>
             <label for="order">Order</label>
-            <option value="date-asc">최신순</option>
-            <option value="date-desc">오래된순</option>
+            <option value="all">Todo</option>
+            <option 
+                value="done"
+                v-on:click="todoDone"
+            >완료</option>
+            <option value="doing">미완료</option>
         </select>
 
         <!-- commit을 이용해 mutations에 접근 -->
@@ -16,7 +20,12 @@
 
 <script>
 export default ({
-    name: 'TodoOrder'
+    name: 'TodoOrder',
+    methods: {
+        todoDone(){
+            alert();
+        }
+    }
 });
 </script>
 
