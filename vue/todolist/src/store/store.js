@@ -32,7 +32,8 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
     state: {
         // FIXME :: 스토리지에서 가져올 필요가 없다. persisted 가 알아서 매핑해준다.
-        todoItems: []
+        todoItems: [],
+        modalVisible: false,
     },
     mutations: {
         // 변이에 대해 payload 라고 하는 추가 전달인자(매개변수, 파라미터)를 사용할 수 있다.

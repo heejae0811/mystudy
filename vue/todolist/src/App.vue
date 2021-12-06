@@ -3,6 +3,8 @@
     <div class="content">
       <todo-header></todo-header>
 
+      <todo-modal></todo-modal>
+
       <todo-input></todo-input>
 
       <todo-order></todo-order>
@@ -16,6 +18,7 @@
 
 <script>
 import TodoHeader from './components/TodoHeader.vue';
+import TodoModal from './components/TodoModal.vue';
 import TodoInput from './components/TodoInput.vue';
 import TodoOrder from './components/TodoOrder.vue';
 import TodoList from './components/TodoList.vue';
@@ -25,6 +28,7 @@ export default ({
   name: 'Todo',
   components: {
     TodoHeader,
+    TodoModal,
     TodoInput,
     TodoOrder,
     TodoList,
