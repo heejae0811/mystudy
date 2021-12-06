@@ -23,7 +23,7 @@ export default ({
     methods: {
         addTodoMethods() {
             if (this.newTodo.length < 1) {
-                alert("입력을 하셔야죠");
+                alert("할 일을 입력해주세요.");
                 return false;
             }
 

@@ -1,19 +1,20 @@
 <template>
     <div 
         class="modal-wrap"
+        v-if="$store.state.modalVisible"
     >
         <div class="modal-content">
             <p>전체 삭제 하시겠습니까?</p>
             <button 
                 type="button"
-                class="btn-check"
-                v-on:click="modalOpenMethods"
-            >Check</button>
+                class="btn-yes"
+                v-on:click="$store.commit('clearAllTodo')"
+            >Yes</button>
             <button 
                 type="button"
-                class="btn-cancle"
-                v-on:click="modalOpenMethods"
-            >Cancle</button>
+                class="btn-no"
+                v-on:click="$store.commit('modalOpen')"
+            >No</button>
         </div>
     </div>
 </template>
@@ -21,15 +22,7 @@
 <script>
 export default ({
     name: 'TodoModal',
-    data() {
-        return {
-            modalVisible: this.$store.state.modalVisible
-        }
-    },
     methods: {
-        modalOpenMethods(modalVisible) {
-            this.$store.dispatch('modalOpenAction', modalVisible)
-        },
         
     }
 });  
@@ -75,11 +68,11 @@ export default ({
     text-align: center;
 }
 
-.btn-check {
+.btn-yes {
     border-radius: 0 0 0 4vw;
 }
 
-.btn-cancle {
+.btn-no {
     border-radius: 0 0 4vw 0;
 }
 </style>

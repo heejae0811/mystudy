@@ -9,7 +9,7 @@
         <!-- commit을 이용해 mutations에 접근 -->
         <button
             class="btn-clear"
-            v-on:click="$store.commit('clearAllTodo')"
+            v-on:click="$store.commit('modalOpen')"
         >Clear All</button>
     </div>
 </template>

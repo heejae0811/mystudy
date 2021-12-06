@@ -51,7 +51,11 @@ export const store = new Vuex.Store({
         },
         clearAllTodo(state) {
             state.todoItems = [];
+            state.modalVisible = !state.modalVisible;
             // FIXME :: localStorage 를 직접 클리어 해줄 필요가 없다. 플러그인이 알아서 해준다
+        },
+        modalOpen(state) {
+            state.modalVisible = !state.modalVisible;
         }
     },
     // 상태를 변이시키는 대신 액션으로 변이에 대한 커밋을 한다.
