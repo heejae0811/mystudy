@@ -6,7 +6,7 @@
             v-model="newTodo"
             v-on:keyup.enter="addTodoMethods"
         >
-        <button 
+        <button
             v-on:click="addTodoMethods"
         >Add</button>
     </div>
@@ -22,12 +22,18 @@ export default ({
     },
     methods: {
         addTodoMethods() {
-            let todoList = {
+            if (this.newTodo.length < 1) {
+                alert("입력을 하셔야죠");
+                return false;
+            }
+
+            // FIXME :: 지역 변수를 만들 필요가 없다.
+            this.$store.dispatch('addTodoAction', {
                 todo: this.newTodo,
                 date: this.$date().format('YYYY.MM.DD')
-            }
+            });
+
             this.newTodo = '';
-            this.$store.dispatch('addTodoAction', todoList);
         }
     }
 });
