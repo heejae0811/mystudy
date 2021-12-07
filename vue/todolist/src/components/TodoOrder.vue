@@ -1,14 +1,19 @@
 <template>
     <div class="select-box">
-        <select>
+        <button
+            type="button"
+            v-on:click="completeTodoMethods"
+        >완료</button>
+
+        <!-- <select>
             <label for="order">Order</label>
             <option value="all">Todo</option>
             <option 
                 value="done"
-                v-on:click="todoDone"
+                v-on:click="completeTodoMethods"
             >완료</option>
             <option value="doing">미완료</option>
-        </select>
+        </select> -->
 
         <!-- commit을 이용해 mutations에 접근 -->
         <button
@@ -22,8 +27,8 @@
 export default ({
     name: 'TodoOrder',
     methods: {
-        todoDone(){
-            alert();
+        completeTodoMethods(todoItem){
+            this.$store.dispatch('selectCompleteTodoAction', todoItem);
         }
     }
 });

@@ -47,8 +47,12 @@ export const store = new Vuex.Store({
                 1
             );
         },
-        completeTodo(state){
-            state.todoItems.complete = !state.todoItems.complete
+        completeTodo(state, payload) {
+            let index = state.todoItems.indexOf(payload);
+            state.todoItems[index].complete = !state.todoItems[index].complete;
+        },
+        selectCompleteTodo(state) {
+            state.todoItems.filter(state.todoItems, state.todoItems.complete = true);
         },
         clearAllTodo(state) {
             state.todoItems = [];
@@ -70,6 +74,9 @@ export const store = new Vuex.Store({
         },
         completeTodoAction({commit}, payload) {
             commit('completeTodo', payload);
+        },
+        selectCompleteTodoAction({ commit }, payload) {
+            commit('selectCompleteTodo', payload);
         }
     },
     // FIXME :: 플러그인이 없으면 새로고침 할 때 마다 데이터가 바뀌는데 어떻게 수정해야할까?

@@ -14,7 +14,7 @@
                         type="checkbox"
                         class="btn-check"
                         v-model="todoList.complete"
-                        v-on:click="completeTodoMethods"
+                        v-on:click="completeTodoMethods(todoList)"
                     >
                     <label for="checkbox">{{ todoList.complete }}</label>
 
