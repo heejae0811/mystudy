@@ -32,7 +32,7 @@ export default ({
             this.$store.dispatch('addTodoAction', {
                 complete: this.complete,
                 todo: this.newTodo,
-                date: this.$date().format('YYYY.MM.DD'),
+                date: this.$date().format('YYYY-MM-DD hh:mm:ss'),
             });
 
             this.newTodo = '';

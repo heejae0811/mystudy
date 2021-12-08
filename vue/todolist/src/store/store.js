@@ -1,42 +1,25 @@
 /**
  * Vuex : 상태 관리 패턴 + 라이브러리, 중앙 집중식 저장소 역할
- * 저장소의 상태를 변경하는 유일한 방법은 commit을 이용한 변이
+ * 저장소의 상태(state)를 변경하는 유일한 방법은 commit을 이용한 변이
  *
  * Dispatch로 Action을 실행시킨 경우(), Action 에서는 비동기 로직을 처리한다. (백엔드 API를 받아온다.)
  * 이후 Commit으로 Mutation을 호출하면, Mutation에서는 동기 로직을 처리한다.
  * 이렇게 Mutate(변이)를 통해 State가 변경되고, Getter에 의해 Component에 데이터가 바인딩되고 view가 바뀐다.
  */
+
 import Vue from 'vue';
 import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
 
 Vue.use(Vuex);
 
-// FIXME :: 미사용 로직은 제거한다.
-/*const storage = {
-    fetch() {
-        const arr = [];
-        if (localStorage.length > 0) {
-            for (let i = 0; i < localStorage.length; i ++) {
-                if (localStorage.key(i) !== 'loglevel:webpack-dev-server') {
-                    arr.push(
-                        JSON.parse(localStorage.getItem(localStorage.key(i)))
-                    );
-                }
-            }
-        }
-        return arr;
-    }
-}*/
-
 export const store = new Vuex.Store({
     state: {
-        // FIXME :: 스토리지에서 가져올 필요가 없다. persisted 가 알아서 매핑해준다.
         todoItems: [],
         modalVisible: false,
     },
     mutations: {
-        // 변이에 대해 payload 라고 하는 추가 전달인자(매개변수, 파라미터)를 사용할 수 있다.
+        // 변이에 대해 payload 라고 하는 추가 전달인자(매개변수=파라미터)를 사용할 수 있다.
         addTodo(state, payload) {
             state.todoItems.push(payload);
         },
@@ -47,9 +30,13 @@ export const store = new Vuex.Store({
                 1
             );
         },
+        // TODO :: 완료, 미완료 리스트 정렬하기
         completeTodo(state, payload) {
             let index = state.todoItems.indexOf(payload);
+
             state.todoItems[index].complete = !state.todoItems[index].complete;
+
+            console.log(index);
         },
         selectCompleteTodo(state) {
             state.todoItems.filter(state.todoItems, state.todoItems.complete = true);
@@ -57,15 +44,34 @@ export const store = new Vuex.Store({
         clearAllTodo(state) {
             state.todoItems = [];
             state.modalVisible = !state.modalVisible;
-            // FIXME :: localStorage 를 직접 클리어 해줄 필요가 없다. 플러그인이 알아서 해준다
         },
         modalOpen(state) {
             state.modalVisible = !state.modalVisible;
         },
+        orderTodoLatest(state) {
+            // TODO :: string을 date type으로 바꾸기, time stamp
+
+            let timeStamp = state.todoItems.date;
+            let date = new Date(timeStamp);
+            // Date.parese
+            
+            console.log(timeStamp);
+            console.log(date);
+
+            state.todoItems.sort(function (a, b) {
+                return a.date - b.date;
+            });
+            alert('1');
+        },
+        orderTodoOldest(state) {
+            state.todoItems.sort(function (a, b) {
+                return a.date - b.date;
+            });
+            alert('2');
+        }
     },
     // 상태를 변이시키는 대신 액션으로 변이에 대한 커밋을 한다.
     actions: {
-        // FIXME :: 객체 선언시 { 한칸씩 } 띄워준다.
         addTodoAction({ commit }, payload) {
             commit('addTodo', payload);
         },
@@ -79,7 +85,6 @@ export const store = new Vuex.Store({
             commit('selectCompleteTodo', payload);
         }
     },
-    // FIXME :: 플러그인이 없으면 새로고침 할 때 마다 데이터가 바뀌는데 어떻게 수정해야할까?
-    // FIXME :: 플러그인을 사용하면 된다.
+    // createPersistedState : state에 저장된 변수와 값을 localstorage에 업데이트 해준다. state와 localstorage를 지속적으로 동기화.
     plugins: [createPersistedState()]
 })

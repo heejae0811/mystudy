@@ -19,7 +19,7 @@
                     <label for="checkbox">{{ todoList.complete }}</label>
 
                     <p class="todo-list">{{ todoList.todo }}</p>
-                    <!-- <p class="todo-date">{{ todoList.date }}</p> -->
+                    <p class="todo-date">{{ todoList.date }}</p>
                 </div>
                 
                 <button
@@ -64,9 +64,12 @@ export default ({
 }
 
 .todo-list li p {
+    font-size: 4vw;
+}
+
+.todo-list li p.todo-list {
     display: inline-block;
     padding-left: 1vw;
-    font-size: 4vw;
 }
 
 .todo-list li button {
