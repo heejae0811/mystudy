@@ -47,6 +47,7 @@ export default ({
     justify-content: space-between;
     margin: 5vw auto;
 }
+
 .todo-input input {
     width: 78%;
     height: 12vw;

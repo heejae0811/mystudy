@@ -10,7 +10,7 @@
                 v-bind:key="index"
             >
                 <div class="inner">
-                    <input 
+                    <input
                         type="checkbox"
                         class="btn-check"
                         v-model="todoList.complete"

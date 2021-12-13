@@ -39,6 +39,7 @@ export const store = new Vuex.Store({
             console.log(index);
         },
         selectCompleteTodo(state) {
+            // TODO :: findIndex를 사용하면 되려나;;
             state.todoItems.filter(state.todoItems, state.todoItems.complete = true);
         },
         clearAllTodo(state) {
@@ -48,26 +49,28 @@ export const store = new Vuex.Store({
         modalOpen(state) {
             state.modalVisible = !state.modalVisible;
         },
-        orderTodoLatest(state) {
-            // TODO :: string을 date type으로 바꾸기, time stamp
+        // FIXME :: 콘솔에 배열이 찍히는데 왜 .sort가 안되는지 모르겠다..
+        // 최신순 정렬
+        sortTodoLatest(state) {
+            let order = state.todoItems.map(item => '날짜' + item.date);
+            console.log(order);
 
-            let timeStamp = state.todoItems.date;
-            let date = new Date(timeStamp);
-            // Date.parese
-            
-            console.log(timeStamp);
-            console.log(date);
-
-            state.todoItems.sort(function (a, b) {
-                return a.date - b.date;
+            order.sort(function (a, b) {
+                return a - b; 
             });
-            alert('1');
+
+            // let result = order.sort((a, b) => b[1] - a[1]);
+            console.log('결과1', order);
         },
-        orderTodoOldest(state) {
-            state.todoItems.sort(function (a, b) {
-                return a.date - b.date;
+        // 오래된 순 정렬
+        sortTodoOldest(state) {
+            let order = state.todoItems.map(item => item.date);
+            console.log(order);
+
+            order.sort(function (a, b) {
+                return b - a;
             });
-            alert('2');
+            console.log('결과2', order);
         }
     },
     // 상태를 변이시키는 대신 액션으로 변이에 대한 커밋을 한다.

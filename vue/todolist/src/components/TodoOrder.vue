@@ -1,13 +1,16 @@
 <template>
     <div class="select-box">
         <!-- select에는 change로 데이터를 변경해야한다.-->
-        <select
-            v-model="order"
-            v-on:change="orderTodo"
-        >
-            <option value="data-desc">최신순</option>
-            <option value="data-asc">오래된순</option>
-        </select>
+            <select
+                name="order"
+                id="order"
+                class="selectbox"
+                v-model="selected"
+                @change="sortTodo"
+            >
+                <option value="date-asc">오래된순</option>
+                <option value="date-desc">최신순</option>
+            </select>
 
         <!-- commit을 이용해 mutations에 접근 -->
         <button
@@ -22,16 +25,17 @@ export default ({
     name: 'TodoOrder',
     data() {
         return {
-            order: 'data-asc'
-        }
+            selected: 'date-asc'
+        };
     },
     methods: {
         // FIXME :: methods에서 commit를 사용해서 mutations를 호출할 수 있는데 dispatch를 사용하는거랑 뭐가 더 좋은가?
-        orderTodo() {
-            if(this.order === 'data-desc') {
-                this.$store.commit('orderTodoLatest');
+       sortTodo() {
+            // this.$emit('sortItem', {value: this.selected});
+            if (this.selected === "date-desc") {
+                this.$store.commit("sortTodoLatest");
             } else {
-                this.$store.commit('orderTodoOldest')
+                this.$store.commit("sortTodoOldest");
             }
         },
         completeTodoMethods(todoItem){
