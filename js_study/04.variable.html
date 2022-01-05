@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전역변수, 지역변수</title>
+</head>
+<body>
+    <script>
+        var a = "global"; // 전역변수
+
+        function f() {
+            console.log(b); // undefined, 함수 중간 부분에 변수를 선언하더라도 자바스크립트 엔진은 함수 안의 변수 선언부를 함수의 첫머리로 끌어올린다.
+
+            // 지역변수
+            var a = "local1"
+            var b = "local2";
+            c = "local3" // 변수를 선언하지 않은 상태에서 값을 대입하면 전역변수로 선언된다.
+
+            console.log(a); // local1, 전역변수 이름과 지역변수 이름이 같아지면 두 변수가 충돌해 전역변수는 숨겨지고 지역변수를 사용하게 된다.
+            console.log(b); // local2
+            console.log(c); // local3
+
+            return b;
+        }
+
+        f();
+        console.log(a); // global
+        //console.log(b); // 참조 오류: not defined
+        console.log(c); // local3, 
+
+    </script>
+</body>
+</html>
