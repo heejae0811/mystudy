@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>조건문, switch 문</title>
     <script>
-        function binaryOperation(a, b, operator) {
+        // 파라미터 초기화 operator = '+'
+        function binaryOperation(a, b, operator = '+') {
             switch(operator) {
                 case '+': return a + b;
                 case '-': return a - b;
@@ -24,6 +25,25 @@
         console.log(binaryOperation(2, 3, '/')); // 0.6666
         console.log(binaryOperation(2, 3, '%')); // 2
         console.log(binaryOperation(2, 3, '^')); // 8
+        console.log(binaryOperation(2, 3)); // NaN
+        console.log(binaryOperation()); // NaN
+
+        // return 값을 작성하지 않으면 값이 출력되지 않는다.(undefined)
+        // 조건과 상관없이 오퍼레이터를 먼저 찾은 후, 그 밑으로 순차적 실행을 한다.
+        function binaryOperation1(a, b, operator = '+') {
+            switch(operator) {
+                case '+': a + b;
+                case '-': return a - b;
+                case '*': a * b;
+                case '/': return a / b;
+                case '%': a % b;
+                case '^': Math.pow(a, b);
+                default: NaN;
+            }
+        }
+
+        // 0.6666, case * 부터 순차적으로 실행되고 a/b에 return 값이 있어서 2*3=6 이 아니라 0.666 출력 
+        console.log(binaryOperation1(2, 3, '*'));
 
 
         window.onload = function() {

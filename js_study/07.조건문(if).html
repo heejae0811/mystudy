@@ -13,7 +13,8 @@
                 if(!name) {
                     alert('이름을 입력하시오.');
                 } else {
-                    // FIXME:: + 라고 하면 name값이 나오는데 쉼표로 하면 왜 안나오나요??
+                    // alert, confime은 window API, 그래서 쉼표(,)가 안됨  
+                    // console은 크로미늄 기반
                     confirm('당신의 이름은 ' + name + ' 입니다.');
                     confirm('당신의 이름은 ', name, ' 입니다.');
                 }

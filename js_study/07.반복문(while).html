@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>반복문, while 문</title>
     <script>
+        // TODO:: 재귀함수, while 문을 사용하지 않고 팩토리얼 만들기
         // 정수 n의 팩토리얼을 구하는 함수
         function fact(n) {
             var k = 1;
@@ -19,6 +20,9 @@
         }
         console.log(fact(5)); // 120
 
+
+        // linearSearch와 binarySearch는 데이터베이스에서 사용하는 검색 방법
+        // 배열이 정렬된 상태에서만 사용할 수 있다. 정렬 비용이 큰지, 검색 비용이 큰지 비교해야 한다.
 
         // 순차 검색, 왼쪽 요소부터 차례대로 x 값과 비교해서 같은 값을 가진 요소를 찾아낸다.
         function linearSearch(x, a) {
@@ -34,10 +38,10 @@
             }
             return null;
         }
-
-        var a = [2, 4, 7, 12, 15, 21];
+        
+        var a = [2, 4, 7, 12, 15, 21]; 
         console.log(linearSearch(15, a)); // 4
-
+        console.log(linearSearch(100, a)); // null
 
         // 이진 검색
         function binarySearch(x, a) {
@@ -81,21 +85,21 @@
 
 
         // 뉴턴-랩슨 법으로 제곱근 구하기
-        // var EPSILON = 1.0e-10;
-        // var d, xnew, xold;
-        // var a = parseFloat(prompt('정수를 입력하시오.'));
-        // xold = (a > 1)? a : 1.0;
+        var EPSILON = 1.0e-10;
+        var d, xnew, xold;
+        var a = parseFloat(prompt('정수를 입력하시오.'));
+        xold = (a > 1)? a : 1.0;
 
-        // do {
-        //     xnew = xold = (xold*xold - a)/(2.0 + xold);
-        //     d = (xold - xnew)/xold;
-        //     xold = xnew;
-        // } while (d > EPSILON);
+        do {
+            xnew = xold = (xold*xold - a)/(2.0 + xold);
+            d = (xold - xnew)/xold;
+            xold = xnew;
+        } while (d > EPSILON);
 
-        // document.write('sqrt(', a, ') =', xnew);
+        document.write('sqrt(', a, ') =', xnew);
 
         
-        // FIXME:: 콘솔 sum2는 왜 출력이 안되나요??
+        // window.onload: html 요소가 다 완료됐다.
         window.onload = function() {
             document.getElementById('num_button').onclick = function() {
                 var count = 0;
@@ -108,8 +112,11 @@
 
                     console.log('sum1', sum);
                 }
-                return sum;
                 console.log('sum2', sum);
+                return sum;
+
+                // return이 실행되는 순간 함수가 완전히 끝나기 때문에 return 밑에 콘솔을 찍으면 영원히 실행되지 않는다.
+                console.log('sum3', sum);
             } 
         }
     </script>
