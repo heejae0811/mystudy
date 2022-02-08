@@ -75,6 +75,36 @@
             console.log('x=' + x + 'y=' + y); // x=1 y=3
         }
         arg(1, 2);
+
+
+        // 재귀 함수로 팩토리얼 구하기
+        function fact(n) {
+            if(n <= 1) {
+                return 1;
+            }
+            return n * fact(n-1);
+        }
+        console.log(fact(5)); // 120
+
+        // fact를 함수 리터럴로 정의
+        // arguments.callee를 사용하면 이름이 없는 익명 함수도 재귀 호출을 할 수 있다.
+        // arguments.callee가 지금 실행 중인 함수를 가리킨다.
+        var fact = function(n) {
+            if(n <= 1) return 1;
+            return n * arguments.callee(n-1);
+        }
+
+        // 하노이의 탑
+        function hanoi(n, a, b, c) {
+            if(n < 1) { return; }
+
+            hanoi(n-1, a, c, b);
+
+            console.log(n + '번째 원판' + a + '->' + c);
+
+            hanoi(n-1, b, a, c);
+        }
+        hanoi(4, 'A', 'B', 'C');
     </script>
 </body>
 </html>
