@@ -11,20 +11,25 @@
                 let sugar = document.getElementById('sugar').value;
                 let result = 0;
 
-                for(i = 0; i < 5; i++){
-                    if((sugar % 5) == (3 * i)){
-                        let sugar_result1 = parseInt(sugar / 5);
-                        let sugar_result2 = parseInt(sugar_result1 / 3);
-                        let result = sugar_result1 + sugar_result2;
+                if((sugar % 5) == 0) {
+                    let sugar_result = parseInt(sugar / 5);
 
-                        document.getElementById('result').innerHTML = '봉지의 최소 개수는' + result;
-                    } else {
-                        let result = -1;
+                    document.getElementById('result').innerHTML = '봉지의 최소 개수는 ' + sugar_result;
+                } else if((sugar % 5) == 3) {
+                    let sugar_result1 = parseInt(sugar / 5);
+                    let sugar_result2 = parseInt(sugar % 5);
+                    let sugar_result3 = parseInt(sugar_result2 / 3);
+                    let result = sugar_result1 + sugar_result3;
 
-                        document.getElementById('result').innerHTML = result + '정확하게 N kg을 만들 수 없습니다.';
-                    }
+                    document.getElementById('result').innerHTML = '봉지의 최소 개수는 ' + result;
+                } else if((sugar % 3) == 0) {
+                    let sugar_result = parseInt(sugar / 3);
 
-                    console.log(i);
+                    document.getElementById('result').innerHTML = '봉지의 최소 개수는 ' + sugar_result;
+                } else {
+                    let result = -1;
+
+                    document.getElementById('result').innerHTML = result + '정확하게 N kg을 만들 수 없습니다.';
                 }
             }
         }
