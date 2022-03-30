@@ -187,6 +187,7 @@
     var reg1 = new RegExp('abc', 'g');
     var reg2 = /abc/g;
     var reg3 = /abc/gi;
+    console.log(reg3.flags); // gi
 
     var i = /\bcat\b/i;
     console.log(i.test('I like a CAT.')); // true
