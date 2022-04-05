@@ -35,12 +35,12 @@
     console.log(s.match(/\d+/g)); // ['1', '2']
 
     console.log('111.222.333'.split('.')); // ['111', '222', '333']
-    console.log('1, 2, 3, 4, 5'.split(/\s*, \s*, 3/));
+    console.log('1, 2, 3, 4, 5'.split(/\s*, \s*, 3/)); // ['1, 2, 3, 4, 5']
 
     var names = ' Tom Sawyer ; Huckleberry Finn ;Becky Thatcher ';
     var list = names.replace(/(^\s*|\s*$)/g, '').split(/\s*;\s*/);
     console.log(list); // ['Tom Sawyer', 'Huckleberry Finn', 'Becky Thatcher']
-
+    
 
 
 </script>
