@@ -119,6 +119,58 @@
     var g = /cat/g;
     console.log(i.test('I like a cat.')); // true
     console.log(i.test('I like a CAT.')); // true
+
+    console.log('📖'.match(/[\s\S]/g)); // ['\uD83D', '\uDCD6']
+    console.log('📖'.match(/[\s\S]/ug)); // ['📖']
+
+    var y = '1 little, 2 little, 3 little indian';
+    var reg = /\d+ little/y;
+    console.log(reg.sticky); // true
+    console.log(reg.exec(y)); // 1 little
+
+    reg.lastIndex = 10;
+    console.log(reg.exec(y)); // 2 little
+
+    var reg = /(\d{3})-(\d{3})/;
+    var copy = new RegExp(reg, 'gi');
+
+
+    // 문자열
+    var url = /\b(\w+):\/{2}([\w.]+)\/(\S*)\b/;
+    var text = 'Tom의 홈페이지 URL은 http://www.example.com/tom 입니다.'
+    console.log(text.match(url)); // http://www.example.com/tom', 'http', 'www.example.com', 'tom'
+
+    console.log('1, 2, 3, 4, 5'.split(/\s*, \s*/)); //  ['1', '2', '3', '4', '5']
+    console.log('1, 2, 3, 4, 5'.split(/\s*, \s*/, 3)); // ['1', '2', '3']
+
+
+    // RegExp 메서드
+    var tel = /(\d{2,5})-(\d{1,4})-(\d{4})/;
+    var text = 'Tom: 010-1234-5678';
+    var result = tel.exec(text);
+    console.log(result); // '010-1234-5678', '010', '1234', '5678'
+
+    var rep1 = /[a-z]{6, 12}/;
+    console.log(rep1.test('abcdef')); // false
+
+    var tel = /(\d{2,5})-(\d{1,4})-(\d{4})/g;
+    var text = 'Tom: 010-1234-5678\nHuck: 020-2222-2222\nBecky: 030-3333-3333';
+    console.log(tel.lastIndex); // 0
+    console.log(tel.exec(text)); // '010-1234-5678', '010', '1234', '5678'
+    console.log(tel.lastIndex); // 18
+    console.log(tel.exec(text)); // 020-2222-2222', '020', '2222', '2222'
+
+    var tel = /(\d{2,5})-(\d{1,4})-(\d{4})/g;
+    var text = 'Tom: 010-1234-5678\nHuck: 020-2222-2222\nBecky: 030-3333-3333';
+    while( (result = tel.exec(text)) != null ) {
+        console.log(result[0], result[1], result[2], result[3]);
+    }
+    // 010-1234-5678 010 1234 5678
+    // 020-2222-2222 020 2222 2222
+    // 030-3333-3333 030 3333 3333
+
+    tel.lastIndex = 0;
+    console.log(tel.exec(text)); // 010-1234-5678', '010', '1234', '5678
 </script>
 </body>
 </html>
