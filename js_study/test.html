@@ -1,0 +1,189 @@
+<main class="main">
+    <!-- our-services[s] -->
+    <section class="main__wrap">
+        <div class="main__inner">
+            <div class="main__text-area">
+                <h2>타이틀 입니다.</h2>
+                <p>컨텐츠 입니다.</p>
+            </div>
+    
+            <ul class="main__list-area">
+                <li>
+                    <div class="main__list-area--image">
+                        <img src="~@/image1.jpg" alt="" class="pc">
+                    </div>
+    
+                    <div class="main__list-area--text">
+                        <dl>
+                            <dt>타이틀 입니다.</dt>
+                            <dd>내용 입니다.</dd>
+                        </dl>
+                    </div>
+                </li>
+    
+                <li>
+                    <div class="main__list-area--image">
+                        <img src="~@/image2.jpg" alt="" class="pc">
+                    </div>
+    
+                    <div class="main__list-area--text">
+                        <dl>
+                            <dt>타이틀 입니다.</dt>
+                            <dd>내용 입니다.</dd>
+                        </dl>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <!-- our-services[e] -->
+</main>
+
+
+<style lang="scss" scoped>
+.our-services {
+    //margin-bottom: 120px;
+    padding: 120px 20px;
+    background-color: $lightGreyBg;
+
+    .inner {
+        h2 {
+            margin-bottom: 30px;
+            color: $baseColor;
+            font-size: 56px;
+            font-weight: 700;
+        }
+
+        .text-area {
+            margin-bottom: 50px;
+
+            h2 {
+                margin: 0;
+            }
+
+            p {
+                font-size: 18px;
+                line-height: 28px;
+            }
+        }
+
+        ul {
+            @include display-flex($displayFlexBetweenStart...);
+
+            li {
+                width: calc(25% - 30px);
+
+                &:hover {
+                    .image-area {
+                        img {
+                            transform: scale(1.1);
+                        }
+                    }
+                }
+
+                .image-area {
+                    @include img-scale();
+                    margin-bottom: 20px;
+
+                    img {
+                        &.mo {
+                            display: none;
+                        }
+                    }
+                }
+
+                .text-area {
+                    dl {
+                        dt {
+                            margin-bottom: 20px;
+                            color: $baseColor;
+                            font-size: 24px;
+                            font-weight: 700;
+                            line-height: 32px;
+                        }
+
+                        dd {
+                            min-height: 165px;
+                            margin-bottom: 50px;
+                            color: $textColor;
+                            font-size: 18px;
+                            line-height: 28px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+</style>
+
+
+<template>
+    <div>
+        <main class="main">
+            <!-- our-services[s] -->
+            <section class="wrap our-services">
+                <div class="inner">
+                    <div class="text-area">
+                        <h2>OUR SERVICE 영역 입니다.</h2>
+                        <p>our service text 입니다.</p>
+                    </div>
+
+                    <ul>
+                        <li>
+                            <div class="image-area">
+                                이미지 입니다.
+                            </div>
+
+                            <div class="text-area">
+                                <dl>
+                                    <dt>제목 입니다.</dt>
+                                    <dd>내용 입니다.</dd>
+                                </dl>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <!-- our-services[e] -->
+        </main>
+    </div>
+</template>
+
+<style lang="scss" scoped>
+.wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    border: 1px solid #000;
+}
+
+.inner {
+    padding: 0 20px;
+}
+
+.main {
+    .our-services {
+        > .text-area {
+            h2 { font-size: 50px; }
+            p { font-size: 25px; }
+        }
+
+        ul {
+            li {
+                .image-area {
+                    width: 100px;
+                    height: 100px;
+                    border: 1px solid #ddd;
+                }
+
+                .text-area {
+                    dl {
+                        dt { color: red; }
+                        dd { color: blue; }
+                    }
+                }
+            }
+        }
+    }   
+}
+</style>
